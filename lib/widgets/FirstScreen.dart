@@ -8,6 +8,12 @@ class FirstScreen extends StatelessWidget {
         title: Text('Profile Page'),
       ),
       body: Center(
+        child: RaisedButton(
+          child: Text('IR a perfil'),
+          onPressed: (){
+            Navigator.of(context).pushNamed('/profile');
+          },
+        ),
       ),
     );
   }
