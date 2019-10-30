@@ -1,5 +1,5 @@
-import 'package:dartapp/widgets/FirstScreen.dart';
-import 'package:dartapp/widgets/ProfilePage.dart';
+import 'package:dartapp/Pages/LoginScreen.dart';
+import 'package:dartapp/Pages/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(PantallasApp());
@@ -11,7 +11,7 @@ class PantallasApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       initialRoute: '/',
       routes: {
-        '/':(context) => FirstScreen(),
+        '/':(context) => LoginScreen(),
         '/profile':(context) => ProfilePage()
       },
     );

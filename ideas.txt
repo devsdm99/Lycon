@@ -1,0 +1,5 @@
+1. Funcionalidades de la app.
+    - Funcionalidad de LIKE <-- se puede dar Like a la persona para empezar a chatear
+    - Historias de los modelos a los que sigues(tipo instagram).
+    - Chat entre modelo-fotografo
+    - Personalización de perfil

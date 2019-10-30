@@ -19,9 +19,26 @@ class ProfilePage extends StatelessWidget {
           Connectons(
             following: 128,
             followers: 3921,
+          ),
+          Description(
+            text: 'Maecenas vestibulum risus mi, eu aliquet tellus auctor ut. Quisque cursus pulvinar luctus. Etiam pellentesque est eget scelerisque sodales. Pellentesque in volutpat nibh. Donec ut ultrices ante, ac imperdiet lorem. Mauris imperdiet tortor a urna interdum ullamcorper. Mauris eu nunc tristique, cursus nisi ut, faucibus mi. In tempus, sapien at vulputate sagittis, justo massa condimentum dui, nec congue massa lorem nec quam. ',
           )
         ],
       ),
+    );
+  }
+}
+
+class Description extends StatelessWidget {
+  final String text;
+
+  Description({Key key, this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: Text(this.text),
     );
   }
 }
