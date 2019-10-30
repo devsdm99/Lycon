@@ -1,5 +1,6 @@
 import 'package:dartapp/CustomControls/CustomButton.dart';
 import 'package:dartapp/Pages/SignUpPage.dart';
+import 'package:dartapp/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -49,6 +50,7 @@ class LoginScreenState extends State<LoginScreen>
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       body: Stack(
@@ -63,15 +65,24 @@ class LoginScreenState extends State<LoginScreen>
           SafeArea(
             child: Column(
               children: <Widget>[
-                SizedBox(
-                  height: 60,
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+                  child: Row(
+                    children: <Widget>[
+                      Image.asset(
+                        'lib/resources/images/logo.png',
+                        width: 120,
+                        height: 120,
+                      )
+                    ],
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 40, vertical: 0),
                   child: Text(
                     'La vida es mucho más hermosa y compleja que un número en la balanza',
                     style: TextStyle(
-                      fontSize: 45,
+                      fontSize: SizeConfig.safeBlockHorizontal * 9,
                       fontWeight: FontWeight.w700,
                       letterSpacing: -2,
                       color: Colors.white,
