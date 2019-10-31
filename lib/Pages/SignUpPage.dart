@@ -1,5 +1,5 @@
 import 'package:dartapp/CustomControls/CustomButton.dart';
-import 'package:dartapp/Pages/LoginScreen.dart';
+import 'package:dartapp/Pages/IntroduceScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -85,7 +85,7 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(
-          pageBuilder: (context, anim1, anim2) => LoginScreen()),
+          pageBuilder: (context, anim1, anim2) => IntroduceScreen()),
     );
   }
 
@@ -144,7 +144,7 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                         color: Colors.white,
                       ),
                       decoration: InputDecoration(
-                        labelText: 'USERNAME',
+                        labelText: 'NOMBRE DE USUARIO',
                         labelStyle: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w600,
@@ -168,7 +168,7 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                         color: Colors.white,
                       ),
                       decoration: InputDecoration(
-                          labelText: 'EMAIL',
+                          labelText: 'DIRECCION DE EMAIL',
                           labelStyle: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,

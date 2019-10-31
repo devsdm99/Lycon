@@ -5,14 +5,14 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Segunda pantalla'),
+        title: Text('Profile screen'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Header(
             height: 200,
-            backgroundAsset: 'assets/images/nature.jpg',
+            backgroundAsset: 'assets/images/backgroundProfile.png',
             userAsset: 'assets/images/user.jpg',
             username: 'Pep el jefe',
           ),

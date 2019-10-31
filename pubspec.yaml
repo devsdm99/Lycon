@@ -38,6 +38,8 @@ flutter:
   assets:
     - assets/images/background.jpg
     - assets/images/icon-back.png
+    - assets/images/user.jpg
+    - assets/images/backgroundProfile.png
 
   # fonts:
   #   - family: Schyler

@@ -1,5 +1,7 @@
-import 'package:dartapp/Pages/LoginScreen.dart';
+import 'package:dartapp/Pages/HomeScreen.dart';
+import 'package:dartapp/Pages/IntroduceScreen.dart';
 import 'package:dartapp/Pages/ProfilePage.dart';
+import 'package:dartapp/Pages/SignUpPage.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(PantallasApp());
@@ -11,7 +13,9 @@ class PantallasApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       initialRoute: '/',
       routes: {
-        '/':(context) => LoginScreen(),
+        '/':(context) => IntroduceScreen(),
+        '/signUp':(context) => SignUpPage(),
+        '/home':(context) => HomeScreen(),
         '/profile':(context) => ProfilePage()
       },
     );
