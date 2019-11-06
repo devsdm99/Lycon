@@ -1,4 +1,3 @@
-import 'package:dartapp/CustomControls/CustomIcon.dart';
 import 'package:dartapp/Pages/ProfilePage.dart';
 import 'package:dartapp/Pages/SwipeScreen.dart';
 import 'package:flutter/material.dart';
@@ -16,13 +15,29 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'title',
-      home: Scaffold(
-        body: Container(
-          color: Colors.red,
-          child: Center(
-            child: NavBar(),
+    return Scaffold(
+      body: SafeArea(
+        child: DefaultTabController(
+          length: 3,
+          initialIndex: 1,
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                _buildTabBar(),
+                _buildTabContent(),
+              ],
+            ),
           ),
         ),
       ),
@@ -30,47 +45,51 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class NavBar extends StatefulWidget {
-  createState() => _NavBarState();
+class TabData {
+  final String label;
+  final IconData icon;
+  final Widget child;
+
+  TabData(this.label, this.icon, this.child);
 }
 
-class _NavBarState extends State<NavBar> {
-  CustomIcon active;
+List<TabData> _tabs = [
+  new TabData("Profile", Icons.person, ProfilePage()),
+  new TabData("Swipe", Icons.arrow_forward_ios, SwipeScreen()),
+  new TabData("Chat", Icons.chat, ChatScreen())
+];
 
-  List items = [
-    CustomIcon(-1.0, Colors.black, Icons.person),
-    CustomIcon(-0.5, Colors.white, Icons.photo_camera),
-    CustomIcon(0.0, Colors.green, Icons.chat)
-  ];
+Widget _buildTabBar() {
+  return TabBar(
+    labelColor: Colors.black,
+    indicatorWeight: 2,
+    indicator: UnderlineTabIndicator(
+      borderSide: BorderSide(color: Colors.yellow, width: 5),
+      insets: EdgeInsets.symmetric(horizontal: 20)
 
-  @override
-  void initState() {
-    super.initState();
+    ),
+    tabs: _tabs
+        .map((tab) => Tab(
+              text: tab.label,
+              icon: Icon(tab.icon),
+            ))
+        .toList(),
+  );
+}
 
-    active = items[0];
-  }
+Widget _buildTabContent() {
+  return Expanded(
+    child: TabBarView(
+      children: _tabs.map((tab) => tab.child).toList(),
+    ),
+  );
+}
 
+class CustomTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
     return Container(
-      height: 80,
-      color: Colors.black,
-      child: Stack(
-        children: <Widget>[
-          AnimatedContainer(
-            duration: Duration(milliseconds: 200),
-            alignment: Alignment(active.x, -1),
-            child: AnimatedContainer(
-              duration: Duration(milliseconds: 1000),
-              height: 8,
-              width: w * 0.2,
-              color: active.color,
-            ),
-          ),
-
-        ],
-      ),
+      child: Column(),
     );
   }
 }
