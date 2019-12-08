@@ -1,4 +1,6 @@
 import 'package:dartapp/SizeConfig.dart';
+import 'package:dartapp/models/CardInfo.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 
@@ -12,6 +14,7 @@ class HomePage extends StatelessWidget {
           _cartas(context),
         ],
       ),
+      bottomNavigationBar: _navigationBar(),
     );
   }
 
@@ -33,24 +36,44 @@ class HomePage extends StatelessWidget {
       "assets/images/3.jpg",
       "assets/images/3.jpg",
       "assets/images/3.jpg",
-
     ];
-
+    List<CardInfo> personas = [
+      new CardInfo("Alexis Ren", "18", "Los Angeles", "assets/images/1.jpg"),
+      new CardInfo("Miriam", "18", "Los Angeles", "assets/images/2.jpg"),
+      new CardInfo("Tania", "18", "Los Angeles", "assets/images/3.jpg"),
+      new CardInfo("Tania", "18", "Los Angeles", "assets/images/3.jpg"),
+      new CardInfo("Tania", "18", "Los Angeles", "assets/images/3.jpg"),
+      new CardInfo("Tania", "18", "Los Angeles", "assets/images/3.jpg"),
+      new CardInfo("Tania", "18", "Los Angeles", "assets/images/3.jpg"),
+    ];
+    //Image.asset('${personas[index].photoURL}', fit: BoxFit.contain,)
     return Container(
-      height: MediaQuery.of(context).size.height * 0.7,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
       child: new TinderSwapCard(
         orientation: AmassOrientation.TOP,
         totalNum: 7,
         stackNum: 3,
         swipeEdge: 5.0,
-        maxWidth: SizeConfig.screenWidth,
-        maxHeight: SizeConfig.screenHeight,
-        minWidth: MediaQuery.of(context).size.width * 0.8,
-        minHeight: MediaQuery.of(context).size.width * 0.8,
+        maxWidth: MediaQuery.of(context).size.width,
+        maxHeight: MediaQuery.of(context).size.height,
+        minWidth: MediaQuery.of(context).size.width * 0.9,
+        minHeight: MediaQuery.of(context).size.width * 0.9,
         cardBuilder: (context, index) =>
-        //CREAR EL MODELO DE CARTA
-        Container(
-          child: Image.asset('${welcomeImages[index]}', fit: BoxFit.contain,),
+            //CREAR EL MODELO DE CARTA
+         Container(
+          height: MediaQuery.of(context).size.height*0.7,
+          width: MediaQuery.of(context).size.width*0.7,
+          color: Color.fromRGBO(29, 9, 28, 1.0),
+          child: Column(
+            children: <Widget>[
+              _datosPersona(personas, index),
+              FadeInImage(
+                image: AssetImage(personas[index].photoURL),
+                placeholder: AssetImage("assets/images/no-image.jpg"),
+              ),
+            ],
+          ),
         ),
         cardController: controller = CardController(),
         swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
@@ -65,6 +88,65 @@ class HomePage extends StatelessWidget {
         swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
           /// Get orientation & index of swiped card!
         },
+      ),
+    );
+  }
+
+  Widget _navigationBar() {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Color.fromRGBO(46, 46, 44, 1.0),
+      selectedItemColor: Color.fromRGBO(247, 88, 106, 1.0),
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(
+            CupertinoIcons.person,
+            size: 35,
+          ),
+          title: Container(),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            CupertinoIcons.heart,
+            size: 35,
+          ),
+          title: Container(),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            CupertinoIcons.heart,
+            size: 35,
+          ),
+          title: Container(),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            CupertinoIcons.refresh,
+            size: 35,
+          ),
+          title: Container(),
+        ),
+      ],
+    );
+  }
+
+  Widget _datosPersona(List<CardInfo> personas, int index) {
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              '${personas[index].name}, ${personas[index].age}',
+              style: TextStyle(color: Colors.white, fontSize: 25.0),
+            ),
+            Text(
+              personas[index].country,
+              style: TextStyle(color: Colors.white, fontSize: 25.0),
+            ),
+          ],
+        ),
       ),
     );
   }
