@@ -51,27 +51,25 @@ class HomePage extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: new TinderSwapCard(
-        orientation: AmassOrientation.TOP,
+        orientation: AmassOrientation.BOTTOM,
         totalNum: 7,
         stackNum: 3,
-        swipeEdge: 5.0,
-        maxWidth: MediaQuery.of(context).size.width,
-        maxHeight: MediaQuery.of(context).size.height,
-        minWidth: MediaQuery.of(context).size.width * 0.9,
-        minHeight: MediaQuery.of(context).size.width * 0.9,
+        swipeEdge: 6.0,
+        maxWidth: MediaQuery.of(context).size.width * 0.9,
+        maxHeight: MediaQuery.of(context).size.width * 0.9,
+        minWidth: MediaQuery.of(context).size.width * 0.8,
+        minHeight: MediaQuery.of(context).size.width * 0.8,
         cardBuilder: (context, index) =>
-            //CREAR EL MODELO DE CARTA
+            //CREAR EL MODELO DE CARTA    
          Container(
-          height: MediaQuery.of(context).size.height*0.7,
-          width: MediaQuery.of(context).size.width*0.7,
-          color: Color.fromRGBO(29, 9, 28, 1.0),
-          child: Column(
-            children: <Widget>[
+           
+          color: Colors.red,
+          child: Stack(
+            children: <Widget>[ 
               _datosPersona(personas, index),
-              FadeInImage(
-                image: AssetImage(personas[index].photoURL),
-                placeholder: AssetImage("assets/images/no-image.jpg"),
-              ),
+              Image(
+                  image: AssetImage(personas[index].photoURL), 
+                ),
             ],
           ),
         ),
