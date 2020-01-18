@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 
 import '../group_tile.dart';
 
-class ChatScreen extends StatefulWidget {
+class GroupPage extends StatefulWidget {
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  _GroupPageState createState() => _GroupPageState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _GroupPageState extends State<GroupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

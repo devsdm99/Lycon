@@ -8,6 +8,9 @@ class GroupTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: (){
+        Navigator.of(context).pushNamed('/chat', arguments: group);
+      },
       leading: Container(
         width: 50,
         decoration: BoxDecoration(

@@ -1,4 +1,5 @@
-import 'package:dartapp/Pages/chat_page.dart';
+
+import 'package:dartapp/Pages/group_page.dart';
 import 'package:dartapp/Pages/likes_page.dart';
 import 'package:dartapp/Pages/profile_page.dart';
 import 'package:dartapp/Pages/swipe_page.dart';
@@ -16,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   final _pageOptions = [
     SwipePage(),
     LikesPage(),
-    ChatScreen(),
+    GroupPage(),
     ProfilePage()
   ];
 
