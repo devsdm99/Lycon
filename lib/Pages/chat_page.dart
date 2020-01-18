@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartapp/db.dart' as db;
+import 'package:dartapp/models/group.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -15,17 +17,22 @@ class _ChatScreenState extends State<ChatScreen> {
           backgroundColor: Colors.green,
         ),
         body: StreamBuilder(
-          stream: Firestore.instance.collection("groups").snapshots(),
-          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          stream: db.getGroups(),
+          builder: (context, AsyncSnapshot<List<Group>> snapshot) {
+            if (snapshot.hasError) {
+              return Center(
+                child: Text(snapshot.error.toString()),
+              );
+            }
             if (!snapshot.hasData) {
               return Center(child: CircularProgressIndicator());
             }
-            List<DocumentSnapshot> docs = snapshot.data.documents;
+            List<Group> groups = snapshot.data;
             return ListView.builder(
-              itemCount: docs.length,
+              itemCount: groups.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(docs[index].data['name']),
+                  title: Text(groups[index].name),
                 );
               },
             );
