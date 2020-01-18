@@ -10,10 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
     
-  cloud_firestore: ^0.13.0+1
   cupertino_icons: ^0.1.2
   flutter_tindercard: ^0.1.8
   material_design_icons_flutter: 3.4.4795
+  cloud_firestore: ^0.13.0+1
   
 
 

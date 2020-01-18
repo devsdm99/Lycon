@@ -1,4 +1,6 @@
 import 'package:dartapp/Pages/chat_page.dart';
+import 'package:dartapp/Pages/likes_page.dart';
+import 'package:dartapp/Pages/profile_page.dart';
 import 'package:dartapp/Pages/swipe_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _pageOptions = [
     SwipePage(),
+    LikesPage(),
     ChatScreen(),
+    ProfilePage()
   ];
 
   int _selectedIndex = 0;

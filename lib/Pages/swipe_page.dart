@@ -31,15 +31,8 @@ class _SwipePageState extends State<SwipePage> {
 
   Widget _cartas(BuildContext context) {
     CardController controller;
-    List<String> welcomeImages = [
-      "assets/images/1.jpg",
-      "assets/images/background.jpg",
-      "assets/images/3.jpg",
-      "assets/images/3.jpg",
-      "assets/images/3.jpg",
-      "assets/images/3.jpg",
-      "assets/images/3.jpg",
-    ];
+
+    
     List<CardInfo> personas = [
       new CardInfo(
           "Alexis Ren", "18", "Los Angeles", "assets/images/1.jpg"),

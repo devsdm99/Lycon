@@ -9,8 +9,8 @@ class ProfilePage extends StatelessWidget {
         children: <Widget>[
           Header(
             height: 200,
-            backgroundAsset: 'assets/images/backgroundProfile.png',
-            userAsset: 'assets/images/user.jpg',
+            backgroundAsset: 'assets/images/background.jpg',
+            userAsset: 'assets/images/1.jpg',
             username: 'Pep el jefe',
           ),
           Connectons(
@@ -47,7 +47,7 @@ class Connectons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
+      color:Color.fromRGBO(46, 46, 44, 1.0),
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -77,18 +77,20 @@ class Connection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = TextStyle(
-      color: Color.fromARGB(160, 0, 0, 0),
+      color: Colors.white,
+      fontSize: 16,
+      fontWeight: FontWeight.bold
     );
 
     return Column(
       children: <Widget>[
         Text(
           textConnection.toUpperCase(),
-          style: style.copyWith(fontSize: 14),
+          style: style,
         ),
         Text(
           '$number',
-          style: style.copyWith(fontSize: 20),
+          style: style,
         ),
       ],
     );
