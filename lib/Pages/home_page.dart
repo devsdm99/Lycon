@@ -3,13 +3,18 @@ import 'package:dartapp/Pages/swipe_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final _pageOptions = [SwipePage(), ChatScreen()];
+  final _pageOptions = [
+    SwipePage(),
+    ChatScreen(),
+  ];
 
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
@@ -36,29 +41,29 @@ class _HomePageState extends State<HomePage> {
       items: [
         BottomNavigationBarItem(
           icon: Icon(
-            CupertinoIcons.person,
-            size: 35,
+            MdiIcons.binoculars,
+            size: 40,
           ),
           title: Container(),
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            CupertinoIcons.heart,
-            size: 35,
+            MdiIcons.heartMultipleOutline,
+            size: 40,
           ),
           title: Container(),
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            CupertinoIcons.refresh,
-            size: 35,
+            MdiIcons.chatOutline,
+            size: 40,
           ),
           title: Container(),
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.chat,
-            size: 35,
+            Icons.person_outline,
+            size: 40,
           ),
           title: Container(),
         ),
