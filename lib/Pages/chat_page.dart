@@ -3,6 +3,8 @@ import 'package:dartapp/db.dart' as db;
 import 'package:dartapp/models/group.dart';
 import 'package:flutter/material.dart';
 
+import '../group_tile.dart';
+
 class ChatScreen extends StatefulWidget {
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -28,11 +30,17 @@ class _ChatScreenState extends State<ChatScreen> {
               return Center(child: CircularProgressIndicator());
             }
             List<Group> groups = snapshot.data;
-            return ListView.builder(
+            return ListView.separated(
               itemCount: groups.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(groups[index].name),
+                final Group group = groups[index];
+                return GroupTile(group: group);
+              },
+              separatorBuilder: (context, index){
+                return Divider(
+                  height: 2,
+                  indent: 75,
+                  endIndent: 15 ,
                 );
               },
             );
@@ -40,3 +48,4 @@ class _ChatScreenState extends State<ChatScreen> {
         ));
   }
 }
+
