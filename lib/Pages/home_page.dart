@@ -4,20 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
-  final _pageOptions = [
-    SwipePage(),
-    ChatScreen()
-  ];
+  final _pageOptions = [SwipePage(), ChatScreen()];
 
   int _selectedIndex = 0;
-    void _onItemTapped(int index) {
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
@@ -32,7 +27,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _navigationBar() {
-    
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       backgroundColor: Color.fromRGBO(46, 46, 44, 1.0),
@@ -43,13 +37,6 @@ class _HomePageState extends State<HomePage> {
         BottomNavigationBarItem(
           icon: Icon(
             CupertinoIcons.person,
-            size: 35,
-          ),
-          title: Container(),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.chat,
             size: 35,
           ),
           title: Container(),
@@ -68,9 +55,14 @@ class _HomePageState extends State<HomePage> {
           ),
           title: Container(),
         ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.chat,
+            size: 35,
+          ),
+          title: Container(),
+        ),
       ],
     );
   }
-
-
 }
