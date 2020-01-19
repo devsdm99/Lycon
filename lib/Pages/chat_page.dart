@@ -1,3 +1,4 @@
+import 'package:dartapp/Widgets/Messagebox.dart';
 import 'package:dartapp/Widgets/loading.dart';
 import 'package:dartapp/Widgets/message_list.dart';
 import 'package:dartapp/Widgets/red_error.dart';
@@ -23,12 +24,19 @@ class ChatPage extends StatelessWidget {
           if (!snapshot.hasData) {
             return Loading();
           }
-          return MessageList(messages: snapshot.data);
+          return Column(
+            children: <Widget>[
+              Expanded(
+                child: MessageList(messages: snapshot.data),
+              ),
+              MessageBox(onSend: (text) {
+                print(text);
+              }),
+            ],
+          );
         },
       ),
     );
   }
 }
-
-
 
