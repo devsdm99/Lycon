@@ -11,11 +11,12 @@ class MessageList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      reverse: true,
       itemCount: messages.length,
       itemBuilder: (context, index) {
         return ListTile(
           title: Text(messages[index].text),
-          subtitle: Text(messages[index].dateTime.toString()),
+          subtitle: Text(messages[index].datetime.toString()),
         );
       },
     );
