@@ -1,9 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:dartapp/Widgets/group_list.dart';
+import 'package:dartapp/Widgets/loading.dart';
+import 'package:dartapp/Widgets/red_error.dart';
 import 'package:dartapp/db.dart' as db;
 import 'package:dartapp/models/group.dart';
 import 'package:flutter/material.dart';
 
-import '../group_tile.dart';
+
 
 class GroupPage extends StatefulWidget {
   @override
@@ -17,35 +20,21 @@ class _GroupPageState extends State<GroupPage> {
         appBar: AppBar(
           title: Text("Chat Page"),
           backgroundColor: Colors.green,
+          automaticallyImplyLeading: false,
         ),
         body: StreamBuilder(
           stream: db.getGroups(),
           builder: (context, AsyncSnapshot<List<Group>> snapshot) {
             if (snapshot.hasError) {
-              return Center(
-                child: Text(snapshot.error.toString()),
-              );
+              return RedError(snapshot.error);
             }
             if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
+              return Loading();
             }
-            List<Group> groups = snapshot.data;
-            return ListView.separated(
-              itemCount: groups.length,
-              itemBuilder: (context, index) {
-                final Group group = groups[index];
-                return GroupTile(group: group);
-              },
-              separatorBuilder: (context, index){
-                return Divider(
-                  height: 2,
-                  indent: 75,
-                  endIndent: 15 ,
-                );
-              },
-            );
+            return GroupList(groups: snapshot.data);
           },
         ));
   }
 }
+
 
