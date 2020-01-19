@@ -1,5 +1,5 @@
 
-import 'package:dartapp/Pages/group_page.dart';
+import 'package:dartapp/Pages/group_list_page.dart';
 import 'package:dartapp/Pages/likes_page.dart';
 import 'package:dartapp/Pages/profile_page.dart';
 import 'package:dartapp/Pages/swipe_page.dart';
@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   final _pageOptions = [
     SwipePage(),
     LikesPage(),
-    GroupPage(),
+    GroupListPage(),
     ProfilePage()
   ];
 

@@ -8,12 +8,12 @@ import 'package:flutter/material.dart';
 
 
 
-class GroupPage extends StatefulWidget {
+class GroupListPage extends StatefulWidget {
   @override
-  _GroupPageState createState() => _GroupPageState();
+  _GroupListPageState createState() => _GroupListPageState();
 }
 
-class _GroupPageState extends State<GroupPage> {
+class _GroupListPageState extends State<GroupListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
