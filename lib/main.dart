@@ -12,7 +12,8 @@ class PantallasApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.teal ), 
+      theme: ThemeData(primarySwatch: Colors.teal,
+      brightness: Brightness.dark), 
       initialRoute: '/',
       routes: {
         '/'       :(context) => IntroduceScreen(),

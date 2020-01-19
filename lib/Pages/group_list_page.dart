@@ -18,8 +18,7 @@ class _GroupListPageState extends State<GroupListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Chat Page"),
-          backgroundColor: Colors.green,
+          title: Text("Groups"),
           automaticallyImplyLeading: false,
         ),
         body: StreamBuilder(
