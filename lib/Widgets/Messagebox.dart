@@ -25,10 +25,11 @@ class _MessageBoxState extends State<MessageBox> {
     super.dispose();
   }
 
-  _send(String text){
+  _send(String text) {
     widget.onSend(text);
     _controller.clear();
   }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,13 +37,29 @@ class _MessageBoxState extends State<MessageBox> {
       child: Row(
         children: <Widget>[
           Expanded(
-              child: TextField(
-            onSubmitted: _send,
-            controller: _controller,
-          )),
-          IconButton(
-            icon: Icon(Icons.send),
-            onPressed: () => _send(_controller.text),
+            child: Material(
+              elevation: 4,
+              shape: StadiumBorder(),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: TextField(
+                  decoration: InputDecoration(border: InputBorder.none),
+                  onSubmitted: _send,
+                  controller: _controller,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(width: 8,),
+          Material(
+            color: Theme.of(context).primaryColor,
+            shape: CircleBorder(),
+            elevation: 4,
+            child: IconButton(
+              icon: Icon(Icons.send),
+              onPressed: () => _send(_controller.text),
+              color: Colors.white,
+            ),
           )
         ],
       ),

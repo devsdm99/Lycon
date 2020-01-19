@@ -12,6 +12,7 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Group group = ModalRoute.of(context).settings.arguments;
     return Scaffold(
+      backgroundColor: Colors.teal[100],
       appBar: AppBar(
         title: Text(group.name),
       ),
