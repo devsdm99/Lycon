@@ -188,6 +188,7 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 32),
                     child: TextField(
+                      
                       style: TextStyle(
                         color: Colors.white,
                       ),

@@ -19,3 +19,12 @@ Future<void> sendMessage(String groupId, Message msg) async {
       .collection('groups/$groupId/messages')
       .add(msg.toFirestore());
 }
+
+Future<void> addNewUser(String email, String username, String uid)async
+{
+  await Firestore.instance.collection('users').document(uid).setData({
+    'username': username,
+    'email'   : email
+  });
+
+}
