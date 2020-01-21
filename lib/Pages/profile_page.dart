@@ -1,26 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    List<String> personas = [
+      "assets/images/1.jpg",
+      "assets/images/4.jpg",
+      "assets/images/3.jpg",
+      "assets/images/2.jpg",
+      "assets/images/5.jpg",
+];
+
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Header(
-            height: 200,
-            backgroundAsset: 'assets/images/background.jpg',
-            userAsset: 'assets/images/1.jpg',
-            username: 'Pep el jefe',
-          ),
-          Connectons(
-            following: 128,
-            followers: 3921,
-          ),
-          Description(
-            text: 'Maecenas vestibulum risus mi, eu aliquet tellus auctor ut. Quisque cursus pulvinar luctus. Etiam pellentesque est eget scelerisque sodales. Pellentesque in volutpat nibh. Donec ut ultrices ante, ac imperdiet lorem. Mauris imperdiet tortor a urna interdum ullamcorper. Mauris eu nunc tristique, cursus nisi ut, faucibus mi. In tempus, sapien at vulputate sagittis, justo massa condimentum dui, nec congue massa lorem nec quam. ',
-          )
-        ],
+      body: SingleChildScrollView(
+              child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Header(
+              height: 200,
+              backgroundAsset: 'assets/images/background.jpg',
+              userAsset: 'assets/images/1.jpg',
+              username: 'Pep el jefe',
+            ),
+            Connectons(
+              following: 128,
+              followers: 3921,
+            ),
+            Container(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                'Instagram',
+                style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Swiper(
+              itemWidth: MediaQuery.of(context).size.width * 0.7,
+              itemHeight: MediaQuery.of(context).size.height * 0.5,
+              itemBuilder: (BuildContext context, int index) {
+                return new Image.asset("${personas[index]}", fit: BoxFit.fill);
+              },
+              layout: SwiperLayout.STACK,
+              itemCount: personas.length,
+              viewportFraction: 0.8,
+              scale: 0.9,
+            ),
+            Description(
+              text: 
+                  'Maecenas vestibulum risus mi, eu aliquet tellus auctor ut. Quisque cursus pulvinar luctus. Etiam pellentesque est eget scelerisque sodales. Pellentesque in volutpat nibh. Donec ut ultrices ante, ac imperdiet lorem. Mauris imperdiet tortor a urna interdum ullamcorper. Mauris eu nunc tristique, cursus nisi ut, faucibus mi. In tempus, sapien at vulputate sagittis, justo massa condimentum dui, nec congue massa lorem nec quam. ',
+            )
+          ],
+        ),
       ),
     );
   }
@@ -47,7 +77,7 @@ class Connectons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color:Color.fromRGBO(46, 46, 44, 1.0),
+      color: Color.fromRGBO(46, 46, 44, 1.0),
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -77,10 +107,7 @@ class Connection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = TextStyle(
-      color: Colors.white,
-      fontSize: 16,
-      fontWeight: FontWeight.bold
-    );
+        color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold);
 
     return Column(
       children: <Widget>[
