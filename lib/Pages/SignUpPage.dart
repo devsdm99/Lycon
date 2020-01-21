@@ -1,6 +1,6 @@
-
 import 'package:dartapp/Pages/IntroduceScreen.dart';
 import 'package:dartapp/Widgets/CustomButton.dart';
+import 'package:dartapp/auth.dart' as auth;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -92,6 +92,7 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    String username = "", email = "", password = "";
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -141,6 +142,11 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 32),
                     child: TextField(
+                      onChanged: (val) {
+                        setState(() {
+                          username = val;
+                        });
+                      },
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -165,6 +171,11 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 32),
                     child: TextField(
+                      onChanged: (val) {
+                        setState(() {
+                          email = val;
+                        });
+                      },
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -187,8 +198,12 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                   SizedBox(height: 16),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 32),
-                    child: TextField(
-                      
+                    child: TextFormField(
+                      onChanged: (val) {
+                        setState(() {
+                          password = val;
+                        });
+                      },
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -223,6 +238,10 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                     child: CustomButton(
                       text: 'Registrate',
                       highlight: true,
+                      onPressed: () async{
+                        print(email);
+                        print(username);
+                      },
                     ),
                   ),
                 ],

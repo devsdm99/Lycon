@@ -74,7 +74,7 @@ class _SwipePageState extends State<SwipePage> {
     ];
     //Image.asset('${personas[index].photoURL}', fit: BoxFit.contain,)
     return Container(
-      color: Colors.yellow,
+      //color: Colors.yellow,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.8,
       child: new TinderSwapCard(
@@ -85,14 +85,14 @@ class _SwipePageState extends State<SwipePage> {
         maxWidth: MediaQuery.of(context).size.width,
         maxHeight: MediaQuery.of(context).size.height * 0.7,
         minWidth: MediaQuery.of(context).size.width * 0.8,
-        minHeight: MediaQuery.of(context).size.height * 0.6,
+        minHeight: MediaQuery.of(context).size.height * 0.69,
         cardBuilder: (context, index) => ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: Color.fromRGBO(29, 29, 28, 1.0),
             ),
-            // Color.fromRGBO(29, 29, 28, 1.0),
+            // 
             child: Stack(
               fit: StackFit.expand,
               children: <Widget>[
@@ -141,8 +141,8 @@ class _SwipePageState extends State<SwipePage> {
 
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.13,
-      color: Colors.black,
+      height: MediaQuery.of(context).size.height * 0.12,
+      //color: Colors.black,
       padding: EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
