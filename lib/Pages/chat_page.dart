@@ -15,6 +15,16 @@ class ChatPage extends StatelessWidget {
       backgroundColor: Color.fromRGBO(29, 29, 28, 1.0),
       appBar: AppBar(
         title: Text(group.name),
+        actions: <Widget>[
+          Container(
+            margin: EdgeInsets.only(right: 30),
+            width: 40,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+          ),
+        ],
       ),
       body: StreamBuilder(
         stream: db.getGroupMessages(group.id),
@@ -31,7 +41,10 @@ class ChatPage extends StatelessWidget {
                 child: MessageList(messages: snapshot.data),
               ),
               MessageBox(onSend: (text) {
-                db.sendMessage(group.id, Message(text));
+                if (text.toString().length > 0) {
+                  String texto = text.toString().trim();
+                  db.sendMessage(group.id, Message(texto));
+                }
               }),
             ],
           );
@@ -40,4 +53,3 @@ class ChatPage extends StatelessWidget {
     );
   }
 }
-

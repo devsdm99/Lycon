@@ -15,7 +15,7 @@ dependencies:
   material_design_icons_flutter: 3.4.4795
   cloud_firestore: ^0.13.0+1
   firebase_auth: ^0.15.3+1
-  
+  flutter_swiper: ^1.1.6
 
 
 dev_dependencies:
