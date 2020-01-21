@@ -2,6 +2,7 @@ import 'package:dartapp/models/CardInfo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class SwipePage extends StatefulWidget {
   @override
@@ -21,13 +22,27 @@ class _SwipePageState extends State<SwipePage> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(bottom:20.0, left: 20, right: 20),
+                padding:
+                    const EdgeInsets.only(bottom: 20.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    FloatingActionButton(),
-                    FloatingActionButton(),
-                    FloatingActionButton(),
+                    IconButton(
+                      iconSize: 50,
+                      icon: new Icon(MdiIcons.refresh),
+                    ),
+                    IconButton(
+                      iconSize: 50,
+                      icon: new Icon(MdiIcons.close),
+                    ),
+                    IconButton(
+                      iconSize: 50,
+                      icon: new Icon(MdiIcons.heartOutline),
+                    ),
+                    IconButton(
+                      iconSize: 50,
+                      icon: new Icon(MdiIcons.hexagonMultipleOutline),
+                    )
                   ],
                 ),
               )
