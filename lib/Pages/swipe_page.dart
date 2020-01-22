@@ -15,40 +15,9 @@ class _SwipePageState extends State<SwipePage> {
     return Scaffold(
       body: new Stack(
         children: <Widget>[
-          _fondoPantalla(),
+          _fondoPantalla(), 
           _cartas(context),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Padding(
-                padding:
-                    const EdgeInsets.only(bottom: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    IconButton(
-                      iconSize: 50,
-                      icon: new Icon(MdiIcons.refresh),
-                    ),
-                    IconButton(
-                      iconSize: 50,
-                      icon: new Icon(MdiIcons.close),
-                    ),
-                    IconButton(
-                      iconSize: 50,
-                      icon: new Icon(MdiIcons.heartOutline),
-                    ),
-                    IconButton(
-                      iconSize: 50,
-                      icon: new Icon(MdiIcons.hexagonMultipleOutline),
-                    )
-                  ],
-                ),
-              )
-            ],
-          )
-        ],
+           BotonesSwipe()],
       ),
     );
   }
@@ -74,7 +43,6 @@ class _SwipePageState extends State<SwipePage> {
     ];
     //Image.asset('${personas[index].photoURL}', fit: BoxFit.contain,)
     return Container(
-      //color: Colors.yellow,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.8,
       child: new TinderSwapCard(
@@ -86,25 +54,20 @@ class _SwipePageState extends State<SwipePage> {
         maxHeight: MediaQuery.of(context).size.height * 0.7,
         minWidth: MediaQuery.of(context).size.width * 0.8,
         minHeight: MediaQuery.of(context).size.height * 0.69,
-        cardBuilder: (context, index) => ClipRRect(
+        cardBuilder: (context, index) =>
+         ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(29, 29, 28, 1.0),
-            ),
-            // 
-            child: Stack(
-              fit: StackFit.expand,
+          child: Stack(
               children: <Widget>[
-                Column(
+                Flex(
+                  direction: Axis.vertical,
                   children: <Widget>[
-                    _datosPersona(personas, index),
                     _foto(personas, index),
                   ],
-                )
+                ),           
+                _datosPersona(personas, index),
               ],
             ),
-          ),
         ),
         cardController: controller = CardController(),
         swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
@@ -137,12 +100,22 @@ class _SwipePageState extends State<SwipePage> {
 
   Widget _datosPersona(List<CardInfo> personas, int index) {
     TextStyle estilo = new TextStyle(
-        fontWeight: FontWeight.bold, color: Colors.white, fontSize: 23.0);
+        fontWeight: FontWeight.bold, color: Colors.white, fontSize: 26.0);
 
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.12,
-      //color: Colors.black,
+      // width: MediaQuery.of(context).size.width,
+      // height: MediaQuery.of(context).size.height * 0.14,
+      // decoration: BoxDecoration(
+      //   gradient: new LinearGradient(
+      //     colors: [
+      //       Color.fromRGBO(204, 51, 87, 1.0),
+      //       Color.fromRGBO(171, 48, 77, 1.0),
+      //     ],
+      //     begin: Alignment.topCenter,
+      //     end: Alignment.bottomCenter
+
+      //   )
+      // ),
       padding: EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,6 +130,46 @@ class _SwipePageState extends State<SwipePage> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class BotonesSwipe extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(bottom: 20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              IconButton(
+                iconSize: 50,
+                icon: new Icon(MdiIcons.refresh),
+                onPressed: () {},
+              ),
+              IconButton(
+                iconSize: 50,
+                icon: new Icon(MdiIcons.close),
+                onPressed: () {},
+              ),
+              IconButton(
+                iconSize: 50,
+                icon: new Icon(MdiIcons.heartOutline),
+                onPressed: () {},
+              ),
+              IconButton(
+                iconSize: 50,
+                icon: new Icon(MdiIcons.hexagonMultipleOutline),
+                onPressed: () {},
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 }
