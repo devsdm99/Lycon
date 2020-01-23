@@ -14,10 +14,7 @@ class _SwipePageState extends State<SwipePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: new Stack(
-        children: <Widget>[
-          _fondoPantalla(), 
-          _cartas(context),
-           BotonesSwipe()],
+        children: <Widget>[_fondoPantalla(), _cartas(context), BotonesSwipe()],
       ),
     );
   }
@@ -54,20 +51,35 @@ class _SwipePageState extends State<SwipePage> {
         maxHeight: MediaQuery.of(context).size.height * 0.7,
         minWidth: MediaQuery.of(context).size.width * 0.8,
         minHeight: MediaQuery.of(context).size.height * 0.69,
-        cardBuilder: (context, index) =>
-         ClipRRect(
+        cardBuilder: (context, index) => ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Stack(
-              children: <Widget>[
-                Flex(
-                  direction: Axis.vertical,
-                  children: <Widget>[
-                    _foto(personas, index),
-                  ],
-                ),           
-                _datosPersona(personas, index),
-              ],
-            ),
+            children: <Widget>[
+              Flex(
+                direction: Axis.vertical,
+                children: <Widget>[
+                  _foto(personas, index),
+                ],
+              ),
+              _datosPersona(personas, index),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(MdiIcons.magnify),
+                        iconSize: 60,
+                        color: Colors.white,
+                        onPressed: () => print("Info pulsado") ,
+                      )
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
         ),
         cardController: controller = CardController(),
         swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
@@ -103,19 +115,8 @@ class _SwipePageState extends State<SwipePage> {
         fontWeight: FontWeight.bold, color: Colors.white, fontSize: 26.0);
 
     return Container(
-      // width: MediaQuery.of(context).size.width,
-      // height: MediaQuery.of(context).size.height * 0.14,
-      // decoration: BoxDecoration(
-      //   gradient: new LinearGradient(
-      //     colors: [
-      //       Color.fromRGBO(204, 51, 87, 1.0),
-      //       Color.fromRGBO(171, 48, 77, 1.0),
-      //     ],
-      //     begin: Alignment.topCenter,
-      //     end: Alignment.bottomCenter
-
-      //   )
-      // ),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height * 0.2,
       padding: EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,11 +162,6 @@ class BotonesSwipe extends StatelessWidget {
                 icon: new Icon(MdiIcons.heartOutline),
                 onPressed: () {},
               ),
-              IconButton(
-                iconSize: 50,
-                icon: new Icon(MdiIcons.hexagonMultipleOutline),
-                onPressed: () {},
-              )
             ],
           ),
         )
