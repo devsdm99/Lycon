@@ -62,22 +62,7 @@ class _SwipePageState extends State<SwipePage> {
                 ],
               ),
               _datosPersona(personas, index),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      IconButton(
-                        icon: Icon(MdiIcons.magnify),
-                        iconSize: 60,
-                        color: Colors.white,
-                        onPressed: () => print("Info pulsado") ,
-                      )
-                    ],
-                  )
-                ],
-              )
+              Lupa()
             ],
           ),
         ),
@@ -131,6 +116,32 @@ class _SwipePageState extends State<SwipePage> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class Lupa extends StatelessWidget {
+  const Lupa({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(MdiIcons.magnify),
+              iconSize: 60,
+              color: Colors.white,
+              onPressed: () => print("Info pulsado") ,
+            )
+          ],
+        )
+      ],
     );
   }
 }

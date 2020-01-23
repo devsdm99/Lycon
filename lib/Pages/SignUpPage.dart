@@ -109,22 +109,7 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
             SafeArea(
               child: Column(
                 children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-                    child: Row(
-                      children: <Widget>[
-                        GestureDetector(
-                          child: Image.asset(
-                            'assets/images/icon-back.png',
-                            fit: BoxFit.cover,
-                            width: 32,
-                            height: 32,
-                          ),
-                          onTap: _handleOnTabBackButton,
-                        ),
-                      ],
-                    ),
-                  ),
+                  BackArrow(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -238,7 +223,7 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                     child: CustomButton(
                       text: 'Registrate',
                       highlight: true,
-                      onPressed: () async{
+                      onPressed: () async {
                         print(email);
                         print(username);
                       },
@@ -250,6 +235,38 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
           ],
         ),
       ),
+    );
+  }
+}
+
+class BackArrow extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          alignment: Alignment.topLeft,
+          height: MediaQuery.of(context).size.height * 0.05,
+          width: MediaQuery.of(context).size.width * 0.10,
+          margin: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              GestureDetector(
+                child: Image.asset(
+                  'assets/images/icon-back.png',
+                  fit: BoxFit.cover,
+                  width: 32,
+                  height: 32,
+                ),
+                onTap: () => Navigator.of(context).pop('/'),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
