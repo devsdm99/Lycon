@@ -41,12 +41,6 @@ class IntroduceScreenState extends State<IntroduceScreen>
     super.dispose();
   }
 
-  void _handleOnPressedSignUp() {
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(pageBuilder: (context, anim1, anim2) => SignUpPage()),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,11 +80,11 @@ class IntroduceScreenState extends State<IntroduceScreen>
                         CustomButton(
                           text: 'Registrate',
                           highlight: true,
-                          onPressed: _handleOnPressedSignUp,
+                          onPressed: () => Navigator.of(context).pushNamed('/signUp'),
                         ),
                         SizedBox(height: 16),
                         CustomButton(
-                          text: 'Iniciar Sesion',
+                          text: 'Iniciar Sesión',
                           onPressed: () {
                             Navigator.of(context).pushNamed('/home');
                           },
