@@ -1,7 +1,6 @@
 import 'package:dartapp/models/CardInfo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class SwipePage extends StatefulWidget {
@@ -28,8 +27,6 @@ class _SwipePageState extends State<SwipePage> {
   }
 
   Widget _cartas(BuildContext context) {
-    CardController controller;
-
     List<CardInfo> personas = [
       new CardInfo("Alexis Ren", "18", "Los Angeles", "assets/images/1.jpg"),
       new CardInfo("Leo", "21", "Vilanova y la Geltrú", "assets/images/4.jpg"),
@@ -39,48 +36,7 @@ class _SwipePageState extends State<SwipePage> {
       new CardInfo("Claire", "19", "Lyon", "assets/images/2.jpg"),
     ];
     //Image.asset('${personas[index].photoURL}', fit: BoxFit.contain,)
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.8,
-      child: new TinderSwapCard(
-        orientation: AmassOrientation.BOTTOM,
-        totalNum: personas.length,
-        stackNum: 3,
-        swipeEdge: 6.0,
-        maxWidth: MediaQuery.of(context).size.width,
-        maxHeight: MediaQuery.of(context).size.height * 0.7,
-        minWidth: MediaQuery.of(context).size.width * 0.8,
-        minHeight: MediaQuery.of(context).size.height * 0.69,
-        cardBuilder: (context, index) => ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Stack(
-            children: <Widget>[
-              Flex(
-                direction: Axis.vertical,
-                children: <Widget>[
-                  _foto(personas, index),
-                ],
-              ),
-              _datosPersona(personas, index),
-              Lupa()
-            ],
-          ),
-        ),
-        cardController: controller = CardController(),
-        swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
-          /// Get swiping card's alignment
-          if (align.x < 0) {
-            //Card is LEFT swiping
-            print("IZQUIERDA");
-          } else if (align.x > 0) {
-            print("DERECHA");
-          }
-        },
-        swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
-          /// Get orientation & index of swiped card!
-        },
-      ),
-    );
+    return Container();
   }
 
   Expanded _foto(List<CardInfo> personas, int index) {
@@ -121,10 +77,6 @@ class _SwipePageState extends State<SwipePage> {
 }
 
 class Lupa extends StatelessWidget {
-  const Lupa({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -134,10 +86,10 @@ class Lupa extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             IconButton(
-              icon: Icon(MdiIcons.magnify),
+              icon: Icon(Icons.star),
               iconSize: 60,
               color: Colors.white,
-              onPressed: () => print("Info pulsado") ,
+              onPressed: () => print("Info pulsado"),
             )
           ],
         )

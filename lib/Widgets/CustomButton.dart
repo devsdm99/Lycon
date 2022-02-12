@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatefulWidget {
-  CustomButton(
-      {Key key, this.text = "", this.highlight = false, this.onPressed})
-      : super(key: key);
-  final String text;
-  final bool highlight;
-  final VoidCallback onPressed;
+  final String? text;
+  final bool? highlight;
+  final VoidCallback? onPressed;
+  CustomButton({this.text = "", this.highlight = false, this.onPressed});
 
   @override
   _CustomButtonState createState() => _CustomButtonState();
@@ -22,7 +20,7 @@ class _CustomButtonState extends State<CustomButton> {
   }
 
   void _handleOnTapUp(tapUpDetails) {
-    if (widget.onPressed != null) widget.onPressed();
+    if (widget.onPressed != null) widget.onPressed!();
     setState(() {
       _active = false;
     });
@@ -30,13 +28,13 @@ class _CustomButtonState extends State<CustomButton> {
 
   Color _getColor() {
     if (_active) {
-      if (widget.highlight) {
+      if (widget.highlight!) {
         return Color.fromRGBO(248, 248, 153, 1);
       } else {
         return Color.fromRGBO(0, 0, 0, 0.25);
       }
     } else {
-      if (widget.highlight) {
+      if (widget.highlight!) {
         return Colors.white;
       } else {
         return Color.fromRGBO(0, 0, 0, 0.5);
@@ -60,10 +58,10 @@ class _CustomButtonState extends State<CustomButton> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              widget.text,
+              widget.text!,
               style: TextStyle(
                 fontSize: 18,
-                color: widget.highlight
+                color: widget.highlight!
                     ? Color.fromRGBO(198, 83, 141, 1)
                     : _active
                         ? Color.fromRGBO(255, 255, 255, 0.5)

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MessageBox extends StatefulWidget {
-  final Function onSend;
+  final Function? onSend;
   MessageBox({this.onSend});
 
   @override
@@ -9,7 +9,7 @@ class MessageBox extends StatefulWidget {
 }
 
 class _MessageBoxState extends State<MessageBox> {
-  TextEditingController _controller;
+  late TextEditingController _controller;
 
   @override
   void initState() {
@@ -26,7 +26,7 @@ class _MessageBoxState extends State<MessageBox> {
   }
 
   _send(String text) {
-    widget.onSend(text);
+    widget.onSend!(text);
     _controller.clear();
   }
 
@@ -50,7 +50,9 @@ class _MessageBoxState extends State<MessageBox> {
               ),
             ),
           ),
-          SizedBox(width: 8,),
+          SizedBox(
+            width: 8,
+          ),
           Material(
             color: Theme.of(context).primaryColor,
             shape: CircleBorder(),

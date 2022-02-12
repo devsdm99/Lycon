@@ -2,13 +2,13 @@ import 'package:dartapp/models/group.dart';
 import 'package:flutter/material.dart';
 
 class GroupTile extends StatelessWidget {
-  final Group group;
+  final Group? group;
   GroupTile({this.group});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: (){
+      onTap: () {
         Navigator.of(context).pushNamed('/chat', arguments: group);
       },
       leading: Container(
@@ -21,14 +21,14 @@ class GroupTile extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(group.name),
-          Text("18/01/2020", style: TextStyle(
-            color: Colors.grey[500],
-            fontSize: 12
-          ),)
+          Text(group!.name),
+          Text(
+            "18/01/2020",
+            style: TextStyle(color: Colors.grey[500], fontSize: 12),
+          )
         ],
       ),
-      subtitle: Text(group.id),
+      subtitle: Text(group!.id),
     );
   }
 }

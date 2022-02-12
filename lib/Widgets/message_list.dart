@@ -7,20 +7,19 @@ class MessageList extends StatelessWidget {
     @required this.messages,
   });
 
-  final List<Message> messages;
+  final List<Message>? messages;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       reverse: true,
-      itemCount: messages.length,
+      itemCount: messages!.length,
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.fromLTRB(17, 0, 16, 8),
-          child: MessageWidget(messages[index]),
+          child: MessageWidget(messages![index]),
         );
       },
     );
   }
 }
-

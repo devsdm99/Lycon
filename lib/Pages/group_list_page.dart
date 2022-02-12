@@ -1,12 +1,9 @@
-
 import 'package:dartapp/Widgets/group_list.dart';
 import 'package:dartapp/Widgets/loading.dart';
 import 'package:dartapp/Widgets/red_error.dart';
 import 'package:dartapp/db.dart' as db;
 import 'package:dartapp/models/group.dart';
 import 'package:flutter/material.dart';
-
-
 
 class GroupListPage extends StatefulWidget {
   @override
@@ -25,7 +22,7 @@ class _GroupListPageState extends State<GroupListPage> {
           stream: db.getGroups(),
           builder: (context, AsyncSnapshot<List<Group>> snapshot) {
             if (snapshot.hasError) {
-              return RedError(snapshot.error);
+              // return RedError(snapshot.error);
             }
             if (!snapshot.hasData) {
               return Loading();
@@ -35,5 +32,3 @@ class _GroupListPageState extends State<GroupListPage> {
         ));
   }
 }
-
-

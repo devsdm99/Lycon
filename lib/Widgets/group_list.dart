@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 class GroupList extends StatelessWidget {
   const GroupList({
     @required this.groups,
-  }) ;
+  });
 
-  final List<Group> groups;
+  final List<Group>? groups;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: groups.length,
+      itemCount: groups!.length,
       itemBuilder: (context, index) {
-        final Group group = groups[index];
+        final Group group = groups![index];
         return GroupTile(group: group);
       },
       separatorBuilder: (context, index) {

@@ -4,27 +4,29 @@ import 'package:dartapp/models/group.dart';
 import 'models/message.dart';
 
 Stream<List<Group>> getGroups() {
-  return Firestore.instance.collection("groups").snapshots().map(toGroupList);
+  return FirebaseFirestore.instance
+      .collection("groups")
+      .snapshots()
+      .map(toGroupList);
 }
 
 Stream<List<Message>> getGroupMessages(String groupId) {
-  return Firestore.instance
-      .collection('groups/$groupId/messages').orderBy('datetime',descending: true)
+  return FirebaseFirestore.instance
+      .collection('groups/$groupId/messages')
+      .orderBy('datetime', descending: true)
       .snapshots()
       .map(toMessageList);
 }
 
 Future<void> sendMessage(String groupId, Message msg) async {
-  await Firestore.instance
+  await FirebaseFirestore.instance
       .collection('groups/$groupId/messages')
       .add(msg.toFirestore());
 }
 
-Future<void> addNewUser(String email, String username, String uid)async
-{
-  await Firestore.instance.collection('users').document(uid).setData({
-    'username': username,
-    'email'   : email
-  });
-
+Future<void> addNewUser(String email, String username, String uid) async {
+  await FirebaseFirestore.instance
+      .collection('users')
+      .doc(uid)
+      .set({'username': username, 'email': email});
 }

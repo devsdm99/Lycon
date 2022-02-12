@@ -10,11 +10,11 @@ import 'package:flutter/material.dart';
 class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Group group = ModalRoute.of(context).settings.arguments;
+    final Group? group = ModalRoute.of(context)!.settings.arguments as Group?;
     return Scaffold(
       backgroundColor: Color.fromRGBO(29, 29, 28, 1.0),
       appBar: AppBar(
-        title: Text(group.name),
+        title: Text(group!.name),
         actions: <Widget>[
           Container(
             margin: EdgeInsets.only(right: 30),
@@ -30,7 +30,7 @@ class ChatPage extends StatelessWidget {
         stream: db.getGroupMessages(group.id),
         builder: (context, AsyncSnapshot<List<Message>> snapshot) {
           if (snapshot.hasError) {
-            return RedError(snapshot.error);
+            //return RedError(snapshot.error);
           }
           if (!snapshot.hasData) {
             return Loading();

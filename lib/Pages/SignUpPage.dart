@@ -10,68 +10,68 @@ class SignUpPage extends StatefulWidget {
 }
 
 class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation<double> _animation;
+  AnimationController? _animationController;
+  Animation<double>? _animation;
 
-  AnimationController _signUpAnimationController;
-  Animation<double> _signUpAnimation;
+  AnimationController? _signUpAnimationController;
+  Animation<double>? _signUpAnimation;
 
-  AnimationController _signInAnimationController;
-  Animation<double> _signInAnimation;
+  AnimationController? _signInAnimationController;
+  Animation<double>? _signInAnimation;
 
   @override
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 20));
+        AnimationController(duration: Duration(seconds: 20), vsync: this);
 
     _signUpAnimationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 250));
+        AnimationController(duration: Duration(milliseconds: 250), vsync: this);
 
     _signInAnimationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 250));
+        AnimationController(duration: Duration(milliseconds: 250), vsync: this);
 
     _animation =
-        CurvedAnimation(parent: _animationController, curve: Curves.linear)
+        CurvedAnimation(parent: _animationController!, curve: Curves.linear)
           ..addListener(() {
             setState(() {});
           })
           ..addStatusListener((animationStatus) {
             if (animationStatus == AnimationStatus.completed) {
-              _animationController.reset();
-              _animationController.forward();
+              _animationController!.reset();
+              _animationController!.forward();
             }
           });
 
     Future.delayed(Duration.zero, () {
       _signUpAnimation =
           Tween(begin: MediaQuery.of(context).size.height, end: 450.0).animate(
-              _signUpAnimationController
+              _signUpAnimationController!
                   .drive(CurveTween(curve: Curves.easeOut)))
             ..addListener(() {
               setState(() {});
             })
             ..addStatusListener((animationStatus) {
               if (animationStatus == AnimationStatus.completed) {
-                _signInAnimationController.forward();
+                _signInAnimationController!.forward();
               }
             });
 
       _signInAnimation = Tween(begin: -32.0, end: 16.0).animate(
-          _signInAnimationController.drive(CurveTween(curve: Curves.easeOut)))
+          _signInAnimationController!.drive(CurveTween(curve: Curves.easeOut)))
         ..addListener(() {
           setState(() {});
         });
     });
 
-    _animationController.forward();
+    _animationController!.forward();
 
-    _signUpAnimationController.forward();
+    _signUpAnimationController!.forward();
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _animationController!.dispose();
     super.dispose();
   }
 
@@ -79,6 +79,7 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
     _handleOnTabBackButton();
     return Future.delayed(Duration.zero, () {
       _handleOnTabBackButton();
+      return true;
     });
   }
 
@@ -96,7 +97,6 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
         body: Stack(
           children: <Widget>[
             Image.asset(
@@ -104,7 +104,7 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
               fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,
-              alignment: FractionalOffset(_animation.value, 0),
+              alignment: FractionalOffset(_animation!.value, 0),
             ),
             SafeArea(
               child: Column(
@@ -240,7 +240,6 @@ class SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
 }
 
 class BackArrow extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Row(

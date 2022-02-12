@@ -2,7 +2,7 @@ import 'package:dartapp/models/message.dart';
 import 'package:flutter/material.dart';
 
 class MessageWidget extends StatelessWidget {
-  final Message message;
+  final Message? message;
   const MessageWidget(this.message);
 
   @override
@@ -17,18 +17,16 @@ class MessageWidget extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                child: Text(message.text, style: TextStyle(
-                  fontSize: 15
-                ),),
+                child: Text(
+                  message!.text!,
+                  style: TextStyle(fontSize: 15),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10, right: 4),
                 child: Text(
-                  message.hhmm,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey
-                  ),
+                  message!.hhmm,
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
               ),
             ],
